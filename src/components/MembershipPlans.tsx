@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { CheckIcon } from "./icons";
+import Reveal from "./Reveal";
+import TiltCard from "./TiltCard";
 
 type Plan = {
   name: string;
@@ -64,7 +66,7 @@ export default function MembershipPlans() {
   return (
     <section id="membership" className="bg-white py-10 sm:py-12 lg:py-14">
       <div className="sp-container">
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between sm:gap-10">
+        <Reveal className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between sm:gap-10">
           <div className="min-w-0">
             <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-[#00AEEF]">
               Flexible Options for Your Goals
@@ -77,17 +79,22 @@ export default function MembershipPlans() {
             Choose a plan that fits your needs and unlock more opportunities on
             SellPlan.com.
           </p>
-        </div>
+        </Reveal>
 
         <div className="mx-auto mt-7 grid max-w-[1100px] grid-cols-1 gap-4 sm:grid-cols-2 md:mt-8 lg:grid-cols-3 lg:gap-5">
-          {plans.map((p) => {
+          {plans.map((p, i) => {
             const muted = !p.featured;
             return (
-              <div
+              <Reveal
                 key={p.name}
-                className={`relative flex flex-col rounded-[16px] bg-white px-5 pb-5 pt-5 ${
+                variant={p.featured ? "scale" : "up"}
+                delayMs={i * 160}
+                className="h-full"
+              >
+              <TiltCard
+                className={`sp-card relative flex h-full min-h-[420px] flex-col overflow-hidden rounded-[16px] bg-white px-6 pb-7 pt-7 sm:min-h-[460px] ${
                   p.featured
-                    ? "border-2 border-[#00AEEF] shadow-[0_12px_32px_-12px_rgba(0,174,239,0.35)]"
+                    ? "sp-glow-pulse border-2 border-[#00AEEF]"
                     : "border border-[#E3E8EF] shadow-[0_8px_24px_-14px_rgba(11,27,54,0.12)]"
                 }`}
               >
@@ -110,7 +117,7 @@ export default function MembershipPlans() {
                   </span>
                 </div>
 
-                <div className="mt-3">
+                <div className="mt-5 min-h-[48px]">
                   {p.price ? (
                     <div className="flex items-end gap-1">
                       <span className="font-display text-[32px] font-black leading-none tracking-tight text-[#0B1B32] sm:text-[36px]">
@@ -131,7 +138,7 @@ export default function MembershipPlans() {
                   )}
                 </div>
 
-                <ul className="mt-4 space-y-2.5">
+                <ul className="mt-6 flex-1 space-y-3.5">
                   {p.features.map((f) => (
                     <li
                       key={f}
@@ -157,15 +164,16 @@ export default function MembershipPlans() {
 
                 <Link
                   href="#"
-                  className={`mt-4 flex h-10 items-center justify-center rounded-[8px] text-[12px] font-extrabold tracking-wider transition ${
+                  className={`sp-btn relative z-[1] mt-8 flex h-11 items-center justify-center rounded-[8px] text-[12px] font-extrabold tracking-wider ${
                     p.featured
-                      ? "bg-[#00AEEF] text-white hover:bg-[#0095cc]"
+                      ? "sp-btn-solid bg-[#00AEEF] text-white hover:bg-[#0095cc]"
                       : "border border-[#D5DCE6] bg-white text-[#8B93A3] hover:border-[#00AEEF] hover:text-[#00AEEF]"
                   }`}
                 >
-                  {p.cta}
+                  <span>{p.cta}</span>
                 </Link>
-              </div>
+              </TiltCard>
+              </Reveal>
             );
           })}
         </div>

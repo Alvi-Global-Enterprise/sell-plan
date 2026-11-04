@@ -69,20 +69,20 @@ export default function Hero() {
 
         <div className="relative lg:absolute lg:inset-0">
           <div className="sp-container flex h-full flex-col justify-end pb-7 pt-[88px] sm:pb-9 sm:pt-[96px] lg:pb-10 lg:pt-[80px]">
-            <div className="max-w-[480px] text-left">
+            <div className="sp-hero-copy max-w-[480px] text-left">
               <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#00AEEF] sm:text-[12px]">
                 The Business Marketplace
               </p>
 
               <h1 className="mt-1.5 font-display font-extrabold uppercase tracking-[-0.03em]">
-                <span className="block text-[18px] leading-[1.2] text-white sm:text-[22px] md:text-[24px] lg:text-[28px]">
-                  The All-in-One
+                <span className="sp-hero-line text-[18px] leading-[1.2] text-white sm:text-[22px] md:text-[24px] lg:text-[28px]">
+                  <span>The All-in-One</span>
                 </span>
-                <span className="mt-0.5 block text-[28px] leading-[1.02] text-white sm:text-[36px] md:text-[42px] lg:text-[50px]">
-                  Business
+                <span className="sp-hero-line mt-0.5 text-[28px] leading-[1.02] text-white sm:text-[36px] md:text-[42px] lg:text-[50px]">
+                  <span>Business</span>
                 </span>
-                <span className="block text-[28px] leading-[1.02] text-[#00AEEF] sm:text-[36px] md:text-[42px] lg:text-[50px]">
-                  Marketplace
+                <span className="sp-hero-line text-[28px] leading-[1.02] sm:text-[36px] md:text-[42px] lg:text-[50px]">
+                  <span className="sp-shimmer-text">Marketplace</span>
                 </span>
               </h1>
 
@@ -93,15 +93,15 @@ export default function Hero() {
               </p>
             </div>
 
-            <div className="mt-4 w-full max-w-[780px] overflow-hidden rounded-[10px] bg-white shadow-[0_12px_32px_-14px_rgba(0,0,0,0.55)] sm:mt-5">
+            <div className="sp-hero-cta mt-4 w-full max-w-[780px] overflow-hidden rounded-[10px] bg-white shadow-[0_12px_32px_-14px_rgba(0,0,0,0.55)] sm:mt-5">
               <div className="grid grid-cols-1 gap-2 p-2.5 sm:grid-cols-2 sm:gap-2.5 sm:p-3.5 lg:grid-cols-4 lg:p-4">
                 {actions.map(({ href, label, solid, Icon }) => (
                   <Link
                     key={label}
                     href={href}
-                    className={`flex h-10 items-center justify-center gap-1.5 rounded-[7px] px-2 text-[11px] font-semibold transition sm:h-[36px] lg:px-1.5 ${
+                    className={`sp-btn flex h-10 items-center justify-center gap-1.5 rounded-[7px] px-2 text-[11px] font-semibold sm:h-[36px] lg:px-1.5 ${
                       solid
-                        ? "bg-[#00AEEF] text-white hover:bg-[#0095cc]"
+                        ? "sp-btn-solid bg-[#00AEEF] text-white hover:bg-[#0095cc]"
                         : "border border-[#00AEEF] bg-white text-[#00AEEF] hover:bg-[#e6f7fe]"
                     }`}
                   >
@@ -112,7 +112,7 @@ export default function Hero() {
               </div>
 
               <div className="bg-[#DCF4FF] px-3 py-3 sm:px-4 sm:py-3.5">
-                <ul className="grid grid-cols-1 gap-x-3 gap-y-2 sm:grid-cols-2 lg:flex lg:items-center lg:justify-between">
+                <ul className="sp-stagger grid grid-cols-1 gap-x-3 gap-y-2 sm:grid-cols-2 lg:flex lg:items-center lg:justify-between">
                   {trust.map((t) => (
                     <li
                       key={t}

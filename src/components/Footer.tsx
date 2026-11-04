@@ -54,7 +54,7 @@ export default function Footer() {
                     <li key={l}>
                       <Link
                         href="#"
-                        className="text-[13px] text-[#5B6577] transition hover:text-[#00AEEF]"
+                        className="sp-footer-link text-[13px] text-[#5B6577]"
                       >
                         {l}
                       </Link>
@@ -84,7 +84,7 @@ export default function Footer() {
               />
               <button
                 type="submit"
-                className="h-11 shrink-0 rounded-r-[8px] bg-[#00AEEF] px-3 text-[11px] font-extrabold uppercase tracking-wide text-white transition hover:bg-[#0095cc] sm:px-5 sm:text-[12px]"
+                className="sp-btn sp-btn-solid h-11 shrink-0 rounded-r-[8px] bg-[#00AEEF] px-3 text-[11px] font-extrabold uppercase tracking-wide text-white hover:bg-[#0095cc] sm:px-5 sm:text-[12px]"
               >
                 Subscribe
               </button>
@@ -95,7 +95,7 @@ export default function Footer() {
                   key={label}
                   href="#"
                   aria-label={label}
-                  className="flex h-9 w-9 items-center justify-center rounded-full text-[#00AEEF] transition hover:bg-[#e6f7fe]"
+                  className="sp-btn flex h-9 w-9 items-center justify-center rounded-full text-[#00AEEF] hover:bg-[#e6f7fe] hover:text-[#0095cc]"
                 >
                   <Icon className="h-[18px] w-[18px]" />
                 </Link>

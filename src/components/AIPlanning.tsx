@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRightIcon, CheckIcon } from "./icons";
+import Reveal from "./Reveal";
 
 const bullets = [
   "AI Business Plan Generator",
@@ -35,7 +36,7 @@ export default function AIPlanning() {
 
         <div className="relative bg-white lg:absolute lg:inset-0 lg:bg-transparent">
           <div className="sp-container flex h-full items-center justify-end py-8 sm:py-10 lg:py-12">
-            <div className="w-full max-w-[440px] rounded-[14px] bg-white p-5 shadow-[0_10px_30px_-16px_rgba(11,27,54,0.2)] sm:p-6 lg:max-w-[440px] lg:rounded-none lg:bg-transparent lg:p-0 lg:shadow-none">
+            <Reveal variant="right" className="w-full max-w-[440px] rounded-[14px] bg-white p-5 shadow-[0_10px_30px_-16px_rgba(11,27,54,0.2)] sm:p-6 lg:max-w-[440px] lg:rounded-none lg:bg-transparent lg:p-0 lg:shadow-none">
               <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-[#00AEEF]">
                 AI-Powered Business Tools
               </p>
@@ -51,7 +52,7 @@ export default function AIPlanning() {
                 {bullets.map((b) => (
                   <li
                     key={b}
-                    className="flex items-center gap-2.5 text-[13px] font-semibold text-[#0B1B32]"
+                    className="flex items-center gap-2.5 text-[13px] font-semibold text-[#0B1B32] transition hover:translate-x-0.5"
                   >
                     <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#00AEEF] text-white">
                       <CheckIcon className="h-3 w-3" />
@@ -63,12 +64,12 @@ export default function AIPlanning() {
 
               <Link
                 href="#"
-                className="mt-6 inline-flex h-10 items-center gap-2 rounded-[8px] bg-[#00AEEF] px-5 text-[13px] font-bold text-white transition hover:bg-[#0095cc]"
+                className="sp-btn sp-btn-solid sp-btn-arrow mt-6 inline-flex h-10 items-center gap-2 rounded-[8px] bg-[#00AEEF] px-5 text-[13px] font-bold text-white hover:bg-[#0095cc]"
               >
                 Try AI Tools
                 <ArrowRightIcon className="h-3.5 w-3.5" strokeWidth={2.4} />
               </Link>
-            </div>
+            </Reveal>
           </div>
         </div>
       </div>

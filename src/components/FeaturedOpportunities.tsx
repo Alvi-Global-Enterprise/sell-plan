@@ -4,6 +4,8 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRightIcon } from "./icons";
+import Reveal from "./Reveal";
+import TiltCard from "./TiltCard";
 
 type Item = {
   category: string;
@@ -110,33 +112,33 @@ export default function FeaturedOpportunities() {
   const items = data[active];
 
   return (
-    <section id="featured" className="bg-white py-10 sm:py-12 lg:py-14">
+    <section id="featured" className="bg-white py-10 sm:py-12 lg:py-16">
       <div className="sp-container">
         {/* Header: title left + View All top-right (Figma) */}
-        <div className="flex items-start justify-between gap-6">
+        <Reveal className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
           <div className="min-w-0">
             <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-[#00AEEF]">
               Featured Opportunities
             </p>
-            <h2 className="mt-1.5 font-display text-[24px] font-extrabold leading-tight tracking-tight text-[#0B1B32] sm:text-[28px] lg:text-[32px]">
+            <h2 className="mt-1.5 font-display text-[26px] font-extrabold leading-tight tracking-tight text-[#0B1B32] sm:text-[30px] lg:text-[36px]">
               Explore the Marketplace
             </h2>
           </div>
 
           <Link
             href="#"
-            className="mt-0.5 hidden h-9 shrink-0 items-center justify-center gap-2 rounded-[8px] border border-[#0B1B32] px-4 text-[12px] font-bold text-[#00AEEF] transition hover:bg-[#0B1B32] hover:text-white sm:mt-4 sm:inline-flex"
+            className="sp-btn sp-btn-arrow mt-0.5 hidden h-10 shrink-0 items-center justify-center gap-2 rounded-[8px] border border-[#0B1B32] px-5 text-[13px] font-bold text-[#00AEEF] hover:bg-[#0B1B32] hover:text-white sm:mt-4 sm:inline-flex"
           >
             View All Listings
-            <ArrowRightIcon className="h-3.5 w-3.5" strokeWidth={2.4} />
+            <ArrowRightIcon className="h-4 w-4" strokeWidth={2.4} />
           </Link>
-        </div>
+        </Reveal>
 
         {/* Tabs */}
         <div
           role="tablist"
           aria-label="Marketplace categories"
-          className="mt-5 flex flex-wrap gap-2.5"
+          className="mt-6 flex flex-wrap gap-2.5 sm:gap-3"
         >
           {tabs.map((t) => {
             const isActive = t === active;
@@ -147,7 +149,7 @@ export default function FeaturedOpportunities() {
                 type="button"
                 aria-selected={isActive}
                 onClick={() => setActive(t)}
-                className={`rounded-full border px-4 py-2 text-[12px] font-semibold transition sm:px-5 sm:py-2.5 sm:text-[13px] ${
+                className={`sp-btn rounded-full border px-4 py-2.5 text-[12px] font-semibold sm:px-5 sm:py-2.5 sm:text-[13px] ${
                   isActive
                     ? "border-[#00AEEF] bg-[#00AEEF] text-white"
                     : "border-[#0B1B32] bg-white text-[#0B1B32] hover:border-[#00AEEF] hover:text-[#00AEEF]"
@@ -161,60 +163,65 @@ export default function FeaturedOpportunities() {
 
         <Link
           href="#"
-          className="mt-4 inline-flex h-10 items-center justify-center gap-2 rounded-[8px] border border-[#0B1B32] px-4 text-[12px] font-bold text-[#00AEEF] sm:hidden"
+          className="sp-btn sp-btn-arrow mt-4 inline-flex h-11 w-full items-center justify-center gap-2 rounded-[8px] border border-[#0B1B32] px-4 text-[13px] font-bold text-[#00AEEF] hover:bg-[#0B1B32] hover:text-white sm:hidden"
         >
           View All Listings
-          <ArrowRightIcon className="h-3.5 w-3.5" strokeWidth={2.4} />
+          <ArrowRightIcon className="h-4 w-4" strokeWidth={2.4} />
         </Link>
 
-        {/* Cards — asset ratio 387:191 */}
+        {/* Cards: 1 → 2 → 4 cols; taller image + larger type */}
         <div
           role="tabpanel"
-          className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 md:gap-5 lg:mt-6 lg:grid-cols-4 lg:gap-5"
+          className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-6 lg:mt-8 xl:grid-cols-4 xl:gap-6"
         >
-          {items.map((item) => (
-            <article
+          {items.map((item, i) => (
+            <Reveal
               key={`${active}-${item.title}`}
-              className="flex flex-col rounded-[14px] bg-white shadow-[0_6px_24px_rgba(11,27,54,0.1)]"
+              as="article"
+              variant={i % 2 === 0 ? "up" : "scale"}
+              delayMs={i * 140}
+              className="h-full"
             >
-              <div className="relative">
-                <div className="relative aspect-[387/191] w-full overflow-hidden rounded-t-[14px]">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw"
-                    className="object-cover"
-                  />
+              <TiltCard className="sp-card flex h-full min-h-[420px] flex-col overflow-hidden rounded-[16px] bg-white shadow-[0_8px_28px_rgba(11,27,54,0.1)] sm:min-h-[440px]">
+                <div className="relative">
+                  <div className="relative aspect-[16/10] w-full min-h-[180px] overflow-hidden rounded-t-[16px] sm:min-h-[200px] lg:min-h-[210px]">
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      sizes="(min-width:1280px) 25vw, (min-width:640px) 50vw, 100vw"
+                      className="sp-card-img object-cover"
+                    />
+                  </div>
+                  <span
+                    className="sp-badge-pop pointer-events-none absolute left-3 z-20 rounded-[6px] bg-[#00AEEF] px-3.5 py-2 text-[12px] font-bold leading-none text-white shadow-[0_2px_8px_rgba(0,0,0,0.18)] sm:left-4 sm:px-4 sm:py-2.5 sm:text-[13px]"
+                    style={{ top: "100%", transform: "translateY(-50%)" }}
+                  >
+                    {item.category}
+                  </span>
                 </div>
-                <span
-                  className="pointer-events-none absolute left-3 z-20 rounded-[6px] bg-[#00AEEF] px-3.5 py-2 text-[12px] font-bold leading-none text-white shadow-[0_2px_8px_rgba(0,0,0,0.18)]"
-                  style={{ top: "100%", transform: "translateY(-50%)" }}
-                >
-                  {item.category}
-                </span>
-              </div>
 
-              <div className="flex flex-1 flex-col px-3.5 pb-3.5 pt-5">
-                <h3 className="min-h-[40px] text-[14px] font-extrabold leading-snug text-[#0B1B32]">
-                  {item.title}
-                </h3>
-                <p className="mt-1 flex items-center gap-1 text-[11px] font-medium text-[#6B7280]">
-                  <LocationPin className="h-3 w-3 shrink-0 text-[#00AEEF]" />
-                  {item.location}
-                </p>
-                <p className="mt-1.5 flex-1 text-[11px] leading-[1.5] text-[#6B7280] sm:text-[12px]">
-                  {item.description}
-                </p>
-                <Link
-                  href="#"
-                  className="mt-3 inline-flex h-9 w-full items-center justify-center gap-1.5 rounded-[7px] border border-[#0B1B32] text-[12px] font-bold text-[#00AEEF] transition hover:bg-[#0B1B32] hover:text-white"
-                >
-                  View Details
-                  <ArrowRightIcon className="h-3.5 w-3.5" strokeWidth={2.4} />
-                </Link>
-              </div>
-            </article>
+                <div className="relative z-[1] flex flex-1 flex-col px-4 pb-5 pt-6 sm:px-5 sm:pb-6 sm:pt-7">
+                  <h3 className="min-h-[48px] text-[16px] font-extrabold leading-snug text-[#0B1B32] sm:text-[17px] lg:text-[18px]">
+                    {item.title}
+                  </h3>
+                  <p className="mt-2 flex items-center gap-1.5 text-[12px] font-medium text-[#6B7280] sm:text-[13px]">
+                    <LocationPin className="h-3.5 w-3.5 shrink-0 text-[#00AEEF]" />
+                    {item.location}
+                  </p>
+                  <p className="mt-2.5 flex-1 text-[13px] leading-[1.55] text-[#6B7280] sm:text-[14px]">
+                    {item.description}
+                  </p>
+                  <Link
+                    href="#"
+                    className="sp-btn sp-btn-arrow mt-5 inline-flex h-11 w-full items-center justify-center gap-2 rounded-[8px] border border-[#0B1B32] text-[13px] font-bold text-[#00AEEF] hover:bg-[#0B1B32] hover:text-white"
+                  >
+                    View Details
+                    <ArrowRightIcon className="h-4 w-4" strokeWidth={2.4} />
+                  </Link>
+                </div>
+              </TiltCard>
+            </Reveal>
           ))}
         </div>
       </div>

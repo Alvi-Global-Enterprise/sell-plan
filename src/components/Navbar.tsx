@@ -17,13 +17,13 @@ function AuthButtons({ className = "" }: { className?: string }) {
     <div className={`flex items-center gap-3 ${className}`}>
       <Link
         href="#"
-        className="rounded-[6px] border border-white px-5 py-2 text-[13px] font-medium text-white transition hover:bg-white hover:text-[#0B1B32]"
+        className="sp-btn rounded-[6px] border border-white px-5 py-2 text-[13px] font-medium text-white hover:bg-white hover:text-[#0B1B32]"
       >
         Sign Up
       </Link>
       <Link
         href="#"
-        className="rounded-[6px] bg-[#00AEEF] px-5 py-2 text-[13px] font-semibold text-white transition hover:bg-[#0095cc]"
+        className="sp-btn sp-btn-solid rounded-[6px] bg-[#00AEEF] px-5 py-2 text-[13px] font-semibold text-white hover:bg-[#0095cc]"
       >
         Log In
       </Link>
@@ -33,7 +33,7 @@ function AuthButtons({ className = "" }: { className?: string }) {
 
 export default function Navbar() {
   return (
-    <header className="absolute inset-x-0 top-0 z-30 bg-[rgba(4,10,22,0.55)] backdrop-blur-[2px]">
+    <header className="sp-nav absolute inset-x-0 top-0 z-30 bg-[rgba(4,10,22,0.55)] backdrop-blur-[2px]">
       <div className="sp-container">
         <div className="flex h-[64px] items-center justify-between gap-4 lg:h-[72px]">
           <Logo className="shrink-0" />
@@ -46,10 +46,10 @@ export default function Navbar() {
               <Link
                 key={l.label}
                 href={l.href}
-                className={`relative whitespace-nowrap py-1.5 text-[13px] transition ${
+                className={`relative whitespace-nowrap py-1.5 text-[13px] transition duration-200 ${
                   l.active
                     ? "font-semibold text-white after:absolute after:left-0 after:right-0 after:-bottom-0.5 after:h-[2px] after:bg-[#00AEEF]"
-                    : "font-medium text-white/65 hover:text-white"
+                    : "sp-link-underline font-medium text-white/65 hover:text-white"
                 }`}
               >
                 {l.label}
