@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+:root {
+  --sp-cyan: #00aeef;
+  --sp-cyan-bright: #00aeef;
+  --sp-cyan-dark: #0095cc;
+  --sp-cyan-soft: #e6f7fe;
+  --sp-navy: #0b1b32;
+  --sp-navy-deep: #040c1c;
+  --sp-ink: #0b1b32;
+  --sp-gray-bg: #f5f7fa;
+  --sp-gray-text: #5b6577;
+  --sp-border: #e3e8ef;
+  --background: #ffffff;
+  --foreground: #0b1b32;
+  --radius-btn: 8px;
+  --radius-card: 14px;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-sp-cyan: var(--sp-cyan);
+  --color-sp-cyan-bright: var(--sp-cyan-bright);
+  --color-sp-cyan-dark: var(--sp-cyan-dark);
+  --color-sp-cyan-soft: var(--sp-cyan-soft);
+  --color-sp-navy: var(--sp-navy);
+  --color-sp-navy-deep: var(--sp-navy-deep);
+  --color-sp-ink: var(--sp-ink);
+  --color-sp-gray: var(--sp-gray-bg);
+  --color-sp-muted: var(--sp-gray-text);
+  --color-sp-border: var(--sp-border);
+  --font-sans: var(--font-montserrat), ui-sans-serif, system-ui, "Segoe UI",
+    sans-serif;
+  --font-display: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+  --radius-btn: 8px;
+  --radius-card: 14px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-montserrat), ui-sans-serif, system-ui, "Segoe UI",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.sp-container {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+@media (min-width: 640px) {
+  .sp-container {
+    padding-inline: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .sp-container {
+    padding-inline: 1.75rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .sp-container {
+    padding-inline: 2rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .sp-container {
+    padding-inline: 2.5rem;
+  }
+}
+
+.sp-eyebrow {
+  color: var(--sp-cyan);
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+details > summary {
+  list-style: none;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
