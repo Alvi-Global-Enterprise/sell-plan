@@ -113,20 +113,6 @@ export default function LoginPage() {
               </p>
             ) : null}
 
-            <div className="rounded-[10px] border border-[#E3E8EF] bg-[#F8FAFC] px-3 py-2.5 text-[11px] leading-relaxed text-[#5B6577]">
-              <p className="font-bold text-[#0B1B32]">Demo accounts</p>
-              <p className="mt-1">
-                Admin: <span className="font-semibold">admin</span> /{" "}
-                <span className="font-semibold">admin@sellplan.com</span> ·{" "}
-                admin123
-              </p>
-              <p>
-                Customer: <span className="font-semibold">customer</span> /{" "}
-                <span className="font-semibold">customer@business.com</span> ·{" "}
-                customer123
-              </p>
-            </div>
-
             <PortalButton type="submit" className="w-full">
               {loading ? "Signing in…" : "Continue"}
             </PortalButton>
