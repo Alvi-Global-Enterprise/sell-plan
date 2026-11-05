@@ -1,11 +1,7 @@
-import Link from "next/link";
 import {
-  CalendarPlanIcon,
-  PlusIcon,
-  SearchIcon,
   TrustTickIcon,
-  UserPlusIcon,
 } from "./icons";
+import HeroAuthActions from "./HeroAuthActions";
 
 const trust = [
   "Real Business Opportunities",
@@ -13,33 +9,6 @@ const trust = [
   "Verified Listings",
   "Investors & Networking",
 ];
-
-const actions = [
-  {
-    href: "#featured",
-    label: "Explore Businesses",
-    solid: true,
-    Icon: SearchIcon,
-  },
-  {
-    href: "#",
-    label: "List Your Business",
-    solid: false,
-    Icon: PlusIcon,
-  },
-  {
-    href: "#ai-planning",
-    label: "Create a Business Plan",
-    solid: false,
-    Icon: CalendarPlanIcon,
-  },
-  {
-    href: "#membership",
-    label: "Join SellPlan",
-    solid: true,
-    Icon: UserPlusIcon,
-  },
-] as const;
 
 export default function Hero() {
   return (
@@ -53,10 +22,6 @@ export default function Hero() {
         backgroundSize: "cover",
       }}
     >
-      {/*
-        Mobile/tablet: natural height so CTA isn't clipped.
-        Desktop (lg+): lock to home-pic ratio 1920×949.
-      */}
       <div className="relative mx-auto w-full max-w-[1920px] lg:aspect-[1920/949]">
         <div
           aria-hidden
@@ -94,22 +59,7 @@ export default function Hero() {
             </div>
 
             <div className="sp-hero-cta mt-4 w-full max-w-[780px] overflow-hidden rounded-[10px] bg-white shadow-[0_12px_32px_-14px_rgba(0,0,0,0.55)] sm:mt-5">
-              <div className="grid grid-cols-1 gap-2 p-2.5 sm:grid-cols-2 sm:gap-2.5 sm:p-3.5 lg:grid-cols-4 lg:p-4">
-                {actions.map(({ href, label, solid, Icon }) => (
-                  <Link
-                    key={label}
-                    href={href}
-                    className={`sp-btn flex h-10 items-center justify-center gap-1.5 rounded-[7px] px-2 text-[11px] font-semibold sm:h-[36px] lg:px-1.5 ${
-                      solid
-                        ? "sp-btn-solid bg-[#00AEEF] text-white hover:bg-[#0095cc]"
-                        : "border border-[#00AEEF] bg-white text-[#00AEEF] hover:bg-[#e6f7fe]"
-                    }`}
-                  >
-                    <Icon className="h-3.5 w-3.5 shrink-0" strokeWidth={2.2} />
-                    <span className="truncate">{label}</span>
-                  </Link>
-                ))}
-              </div>
+              <HeroAuthActions />
 
               <div className="bg-[#DCF4FF] px-3 py-3 sm:px-4 sm:py-3.5">
                 <ul className="sp-stagger grid grid-cols-1 gap-x-3 gap-y-2 sm:grid-cols-2 lg:flex lg:items-center lg:justify-between">

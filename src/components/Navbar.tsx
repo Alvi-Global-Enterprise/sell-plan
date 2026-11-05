@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Logo from "./Logo";
 import { MenuIcon } from "./icons";
+import AuthNavButtons from "./AuthNavButtons";
 
 const links = [
   { label: "Home", href: "#", active: true },
@@ -8,28 +9,9 @@ const links = [
   { label: "Business Plans", href: "#ai-planning" },
   { label: "Investors", href: "#membership" },
   { label: "AI Tools", href: "#ai-planning" },
-  { label: "Resources", href: "#how-it-works" },
+  { label: "Resource Centre", href: "/portal/resources" },
   { label: "Pricing", href: "#membership" },
 ];
-
-function AuthButtons({ className = "" }: { className?: string }) {
-  return (
-    <div className={`flex items-center gap-3 ${className}`}>
-      <Link
-        href="#"
-        className="sp-btn rounded-[6px] border border-white px-5 py-2 text-[13px] font-medium text-white hover:bg-white hover:text-[#0B1B32]"
-      >
-        Sign Up
-      </Link>
-      <Link
-        href="#"
-        className="sp-btn sp-btn-solid rounded-[6px] bg-[#00AEEF] px-5 py-2 text-[13px] font-semibold text-white hover:bg-[#0095cc]"
-      >
-        Log In
-      </Link>
-    </div>
-  );
-}
 
 export default function Navbar() {
   return (
@@ -57,7 +39,7 @@ export default function Navbar() {
             ))}
           </nav>
 
-          <AuthButtons className="hidden shrink-0 lg:flex" />
+          <AuthNavButtons className="hidden shrink-0 lg:flex" />
 
           <details className="group relative lg:hidden">
             <summary
@@ -82,7 +64,7 @@ export default function Navbar() {
                   </Link>
                 ))}
               </nav>
-              <AuthButtons className="mt-4 flex-col gap-2 [&>a]:w-full [&>a]:text-center sm:flex-row sm:[&>a]:flex-1" />
+              <AuthNavButtons className="mt-4 flex-col gap-2 [&>a]:w-full [&>a]:text-center [&>button]:w-full sm:flex-row sm:[&>a]:flex-1 sm:[&>button]:flex-1" />
             </div>
           </details>
         </div>
